@@ -9,13 +9,7 @@ class Main(object):
     def run(self):
         """Run program."""
         conf = Config()
-        db = Database(
-            conf.DATABASE_HOST,
-            conf.DATABASE_USERNAME,
-            conf.DATABASE_PASSWORD,
-            conf.DATABASE_PORT,
-            conf.DATABASE_NAME,
-        )
+        db = Database()
         db.connect()
         cursor = db.conn.cursor()
         cursor.execute("SELECT 42")
