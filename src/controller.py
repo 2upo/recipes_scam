@@ -46,7 +46,6 @@ async def handle_recipe(update: Update, context: ContextTypes.DEFAULT_TYPE, user
         "r": recipe_id, # recipe id
         "a": new_status.value, # action
     })
-    print("ABOBAAAAAAA", len(callback_template(recipe.recipe_id, RecipeStatus.Confirmed).encode("utf-8")))
 
     keyboard = [
         [
