@@ -11,15 +11,8 @@ class Config(object):
     load_dotenv(path.join(basedir, ".env"))
 
     # Database config
-    DATABASE_HOST = environ.get("DATABASE_HOST")
-    DATABASE_USERNAME = environ.get("DATABASE_USERNAME")
-    DATABASE_PASSWORD = environ.get("DATABASE_PASSWORD")
-    DATABASE_PORT = environ.get("DATABASE_PORT")
-    DATABASE_NAME = environ.get("DATABASE_NAME")
-
-    # SQL queries
-    SQL_QUERIES_FOLDER = "sql"
+    DSN = environ.get("DSN")
 
     # Client config
-    TG_BOT_TOKEN = ""
-    PASSPHRASE = environ.get("PASSPHRASE")
+    TG_BOT_TOKEN = environ.get("BOT_TOKEN")
+    PASSPHRASE_HASH = environ.get("PASSPHRASE_HASH")

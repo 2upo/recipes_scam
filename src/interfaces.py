@@ -1,30 +1,30 @@
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from collections import namedtuple
 from enum import Enum
 from io import BytesIO
 from datetime import datetime
 from typing import Optional, List
 
-IUser = namedtuple("IUser", ["user_id", "chat_id", "is_active"])
+IUser = namedtuple("IUser", ["user_id", "tg_id", "status"])
 
 UserStatus = Enum("UserStatus", ["Active", "Inactive", "Banned"])
-RecipeStatus = Enum("UserStatus", ["Uploaded", "Processed", "Confirmed"])
+RecipeStatus = Enum("RecipeStatus", ["Uploaded", "Processed", "Confirmed", "Discarded"])
 
 
 @dataclass
-class IItems(object):
+class IItem(object):
     item_id: str
     recipe_id: str
-    name: str = None
-    name_translated: str = None
-    price: int = None
+    name: str = field(default=None)
+    name_translated: str = field(default=None)
+    price: int = field(default=None)
 
 
 @dataclass
 class IRecipeContent():
     recipe_id: str
-    overall: Optional[int] = None
-    items: List[IItems] = []
+    overall: Optional[int]
+    items: List[IItem]
 
 
 @dataclass
@@ -34,4 +34,4 @@ class IRecipe(IRecipeContent):
     raw_image_path: str
     created_at: datetime
     updated_at: datetime
-    status: RecipeStatus = RecipeStatus.Uploaded
+    status: RecipeStatus = field(default=RecipeStatus.Uploaded)
