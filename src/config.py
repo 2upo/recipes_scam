@@ -14,5 +14,5 @@ class Config(object):
     DSN = environ.get("DSN")
 
     # Client config
-    TG_BOT_TOKEN = environ.get("BOT_TOCKEN")
+    TG_BOT_TOKEN = environ.get("BOT_TOKEN")
     PASSPHRASE_HASH = environ.get("PASSPHRASE_HASH")
